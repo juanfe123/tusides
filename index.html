@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo de Software Personalizado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .code-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.08;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #00ff88;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .code-line {
+            white-space: nowrap;
+            animation: scrollCode 25s linear infinite;
+            margin: 8px 0;
+        }
+
+        @keyframes scrollCode {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-section {
+            margin-bottom: 50px;
+        }
+
+        .main-title {
+            font-size: 52px;
+            font-weight: bold;
+            margin: 30px 0;
+            background: linear-gradient(45deg, #00ff88, #6C5CE7, #ff6b6b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #6C5CE7;
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
+        }
+
+        .service-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .desktop-icon { color: #ff6b6b; }
+        .web-icon { color: #00ff88; }
+
+        .service-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 18px;
+        }
+
+        .service-desc {
+            color: #b0b0b0;
+            line-height: 1.7;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .service-features li {
+            color: #d0d0d0;
+            margin: 8px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .hosting-section {
+            background: rgba(108, 92, 231, 0.1);
+            border: 2px solid rgba(108, 92, 231, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .hostinger-logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: brightness(1.2);
+        }
+
+        .hosting-title {
+            font-size: 28px;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .hosting-desc {
+            color: #c0c0c0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .tech-examples {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 40px 0;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 18px;
+            border-radius: 25px;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: #6C5CE7;
+            transform: scale(1.05);
+        }
+
+        .cta-section {
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #6C5CE7, #00ff88);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #00ff88, #6C5CE7);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+        }
+
+        .secondary-cta {
+            background: transparent;
+            border: 2px solid #6C5CE7;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+            font-size: 24px;
+        }
+
+        .floating-element:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 25%; right: 15%; animation-delay: 3s; }
+        .floating-element:nth-child(3) { bottom: 25%; left: 20%; animation-delay: 6s; }
+        .floating-element:nth-child(4) { bottom: 35%; right: 12%; animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(10deg); }
+        }
+
+        @media (max-width: 768px) {
+            .main-title { font-size: 36px; }
+            .services { grid-template-columns: 1fr; }
+            .container { padding: 40px 15px; }
+            .cta-button { 
+                display: block; 
+                margin: 10px auto; 
+                max-width: 280px; 
+            }
+            .hostinger-logo { width: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="code-bg">
+        <div class="code-line">// ¿Necesitas una aplicación personalizada? Nosotros la creamos</div>
+        <div class="code-line">function crearSoftware(tuIdea) { return solucionCompleta; }</div>
+        <div class="code-line">class DesarrolloPersonalizado { private expertise = "Todas las tecnologías"; }</div>
+        <div class="code-line">if (necesitasApp) { contactanos(); desarrollamos(); desplegamos(); }</div>
+        <div class="code-line">const tuSoftware = await desarrollarIdea(requerimientos);</div>
+        <div class="code-line">// Desde apps de escritorio hasta sistemas web complejos</div>
+    </div>
+
+    <div class="floating-elements">
+        <div class="floating-element">💡</div>
+        <div class="floating-element">⚡</div>
+        <div class="floating-element">🚀</div>
+        <div class="floating-element">💻</div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="header-section">
+                <h1 class="main-title">¿Tienes una Idea de Software?</h1>
+                <p class="subtitle">
+                    Convertimos tu concepto en realidad. Desarrollamos aplicaciones de escritorio, 
+                    sistemas web, y soluciones personalizadas. Tu idea, nuestra experiencia técnica.
+                </p>
+            </div>
+
+            <div class="services">
+                <div class="service-card">
+                    <span class="service-icon desktop-icon">🖥️</span>
+                    <h3 class="service-title">Software de Escritorio</h3>
+                    <p class="service-desc">
+                        Aplicaciones nativas para Windows, Mac y Linux. Desde herramientas simples 
+                        hasta sistemas empresariales complejos.
+                    </p>
+                    <ul class="service-features">
+                        <li>Aplicaciones de gestión y administración</li>
+                        <li>Herramientas de productividad</li>
+                        <li>Software especializado para tu industria</li>
+                        <li>Integración con bases de datos</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon web-icon">🌐</span>
+                    <h3 class="service-title">Aplicaciones Web</h3>
+                    <p class="service-desc">
+                        Sistemas web modernos, plataformas online y aplicaciones que funcionan 
+                        desde cualquier navegador.
+                    </p>
+                    <ul class="service-features">
+                        <li>Plataformas web personalizadas</li>
+                        <li>Sistemas de gestión online</li>
+                        <li>E-commerce y tiendas virtuales</li>
+                        <li>Aplicaciones móviles web (PWA)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="hosting-section">
+                <img src="https://genuinocloud.com/wp-content/uploads/2019/09/mx-con-datos-de-genuinocloud-hostinger-images-genuinocloud.com.png" 
+                     alt="Hostinger Logo" class="hostinger-logo">
+                <h3 class="hosting-title">¿Tu Proyecto Necesita Alojamiento Web?</h3>
+                <p class="hosting-desc">
+                    Para aplicaciones web, recomendamos Hostinger como plataforma de hosting confiable. 
+                    Nosotros desarrollamos tu software y lo configuramos en el hosting que mejor se adapte a tu proyecto.
+                </p>
+            </div>
+
+            <div class="tech-examples">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Java</span>
+                <span class="tech-badge">C#</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Vue.js</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">PHP</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">MongoDB</span>
+                <span class="tech-badge">Docker</span>
+            </div>
+
+            <div class="cta-section">
+                <a href="#" class="cta-button">Cuéntanos Tu Idea</a>
+                <a href="#" class="cta-button secondary-cta">Ver Proyectos Anteriores</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animación de las líneas de código
+        const codeLines = document.querySelectorAll('.code-line');
+        codeLines.forEach((line, index) => {
+            line.style.animationDelay = `${index * 4}s`;
+            line.style.animationDuration = `${25 + index * 3}s`;
+        });
+
+        // Efecto de partículas en el cursor
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                createParticle(e.clientX, e.clientY);
+            }
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.width = '3px';
+            particle.style.height = '3px';
+            particle.style.background = '#6C5CE7';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1000';
+            particle.style.animation = 'particleFade 1.5s ease-out forwards';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 1500);
+        }
+
+        // CSS para la animación de partículas
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFade {
+                0% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0) translateY(-30px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Efecto hover mejorado para las cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
