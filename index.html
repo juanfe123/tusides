@@ -5,305 +5,705 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desarrollo de Software Personalizado</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* === ESTILOS BASE GLOBALES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-            overflow-x: hidden;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-        }
+/* === CONTENEDORES PRINCIPALES === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+}
 
-        .code-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.08;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            color: #00ff88;
-            overflow: hidden;
-            z-index: 0;
-        }
+.container.form-page {
+    max-width: 1000px;
+    padding: 40px 20px;
+    text-align: left;
+}
 
-        .code-line {
-            white-space: nowrap;
-            animation: scrollCode 25s linear infinite;
-            margin: 8px 0;
-        }
+/* === FONDO DE CÓDIGO ANIMADO === */
+.code-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.08;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #00ff88;
+    overflow: hidden;
+    z-index: 0;
+}
 
-        @keyframes scrollCode {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
+.code-bg.reduced-opacity {
+    opacity: 0.06;
+    font-size: 12px;
+}
 
-        .main-content {
-            position: relative;
-            z-index: 1;
-        }
+.code-line {
+    white-space: nowrap;
+    animation: scrollCode 25s linear infinite;
+    margin: 8px 0;
+}
 
-        .header-section {
-            margin-bottom: 50px;
-        }
+.code-line.slower {
+    animation: scrollCode 30s linear infinite;
+    margin: 12px 0;
+}
 
-        .main-title {
-            font-size: 52px;
-            font-weight: bold;
-            margin: 30px 0;
-            background: linear-gradient(45deg, #00ff88, #6C5CE7, #ff6b6b);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 4s ease-in-out infinite;
-        }
+@keyframes scrollCode {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+/* === CONTENIDO PRINCIPAL === */
+.main-content {
+    position: relative;
+    z-index: 1;
+}
 
-        .subtitle {
-            font-size: 22px;
-            color: #a0a0a0;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.5;
-        }
+/* === NAVEGACIÓN === */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    color: #6C5CE7;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
 
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
+.back-button:hover {
+    color: #00ff88;
+    transform: translateX(-5px);
+}
 
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 35px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+.back-button::before {
+    content: '← ';
+    margin-right: 8px;
+    font-size: 18px;
+}
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
+/* === SECCIONES DE ENCABEZADO === */
+.header-section {
+    margin-bottom: 50px;
+}
 
-        .service-card:hover::before {
-            left: 100%;
-        }
+.header-section.form-header {
+    text-align: center;
+}
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: #6C5CE7;
-            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
-        }
+/* === TÍTULOS PRINCIPALES === */
+.main-title {
+    font-size: 52px;
+    font-weight: bold;
+    margin: 30px 0;
+    background: linear-gradient(45deg, #00ff88, #6C5CE7, #ff6b6b);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+}
 
-        .service-icon {
-            font-size: 56px;
-            margin-bottom: 25px;
-            display: block;
-        }
+.main-title.form-title {
+    font-size: 42px;
+    margin: 20px 0;
+}
 
-        .desktop-icon { color: #ff6b6b; }
-        .web-icon { color: #00ff88; }
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
 
-        .service-title {
-            font-size: 26px;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 18px;
-        }
+/* === SUBTÍTULOS === */
+.subtitle {
+    font-size: 22px;
+    color: #a0a0a0;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
 
-        .service-desc {
-            color: #b0b0b0;
-            line-height: 1.7;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
+.subtitle.form-subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    line-height: 1.6;
+}
 
-        .service-features {
-            text-align: left;
-            margin-top: 20px;
-        }
+/* === GRID DE SERVICIOS === */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin: 60px 0;
+}
 
-        .service-features li {
-            color: #d0d0d0;
-            margin: 8px 0;
-            padding-left: 15px;
-            position: relative;
-        }
+/* === TARJETAS DE SERVICIOS === */
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 35px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
 
-        .service-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #00ff88;
-            font-weight: bold;
-        }
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
 
-        .hosting-section {
-            background: rgba(108, 92, 231, 0.1);
-            border: 2px solid rgba(108, 92, 231, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 50px 0;
-            position: relative;
-        }
+.service-card:hover::before {
+    left: 100%;
+}
 
-        .hostinger-logo {
-            width: 180px;
-            height: auto;
-            margin-bottom: 20px;
-            filter: brightness(1.2);
-        }
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: #6C5CE7;
+    box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
+}
 
-        .hosting-title {
-            font-size: 28px;
-            color: white;
-            margin-bottom: 15px;
-        }
+/* === ICONOS Y CONTENIDO DE SERVICIOS === */
+.service-icon {
+    font-size: 56px;
+    margin-bottom: 25px;
+    display: block;
+}
 
-        .hosting-desc {
-            color: #c0c0c0;
-            font-size: 18px;
-            line-height: 1.6;
-        }
+.desktop-icon { color: #ff6b6b; }
+.web-icon { color: #00ff88; }
 
-        .tech-examples {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 40px 0;
-        }
+.service-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 18px;
+}
 
-        .tech-badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 18px;
-            border-radius: 25px;
-            color: white;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
+.service-desc {
+    color: #b0b0b0;
+    line-height: 1.7;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
 
-        .tech-badge:hover {
-            background: #6C5CE7;
-            transform: scale(1.05);
-        }
+.service-features {
+    text-align: left;
+    margin-top: 20px;
+}
 
-        .cta-section {
-            margin-top: 60px;
-        }
+.service-features li {
+    color: #d0d0d0;
+    margin: 8px 0;
+    padding-left: 15px;
+    position: relative;
+}
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #6C5CE7, #00ff88);
-            color: white;
-            padding: 20px 50px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: bold;
-            margin: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+.service-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #00ff88;
+    font-weight: bold;
+}
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #00ff88, #6C5CE7);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
+/* === SECCIÓN DE HOSTING === */
+.hosting-section {
+    background: rgba(108, 92, 231, 0.1);
+    border: 2px solid rgba(108, 92, 231, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 50px 0;
+    position: relative;
+}
 
-        .cta-button:hover::before {
-            left: 0;
-        }
+.hostinger-logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 20px;
+    filter: brightness(1.2);
+}
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
-        }
+.hosting-title {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 15px;
+}
 
-        .secondary-cta {
-            background: transparent;
-            border: 2px solid #6C5CE7;
-        }
+.hosting-desc {
+    color: #c0c0c0;
+    font-size: 18px;
+    line-height: 1.6;
+}
 
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
+/* === EJEMPLOS TECNOLÓGICOS === */
+.tech-examples {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 40px 0;
+}
 
-        .floating-element {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 8s ease-in-out infinite;
-            font-size: 24px;
-        }
+.tech-badge {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 18px;
+    border-radius: 25px;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
 
-        .floating-element:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
-        .floating-element:nth-child(2) { top: 25%; right: 15%; animation-delay: 3s; }
-        .floating-element:nth-child(3) { bottom: 25%; left: 20%; animation-delay: 6s; }
-        .floating-element:nth-child(4) { bottom: 35%; right: 12%; animation-delay: 2s; }
+.tech-badge:hover {
+    background: #6C5CE7;
+    transform: scale(1.05);
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(10deg); }
-        }
+/* === FORMULARIOS === */
+.form-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+}
 
-        @media (max-width: 768px) {
-            .main-title { font-size: 36px; }
-            .services { grid-template-columns: 1fr; }
-            .container { padding: 40px 15px; }
-            .cta-button { 
-                display: block; 
-                margin: 10px auto; 
-                max-width: 280px; 
-            }
-            .hostinger-logo { width: 150px; }
-        }
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6C5CE7, #00ff88, #ff6b6b);
+    background-size: 300% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-label {
+    display: block;
+    color: #e0e0e0;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #6C5CE7;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+    color: #888;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+}
+
+.form-select {
+    cursor: pointer;
+}
+
+.form-select option {
+    background: #1a1a2e;
+    color: white;
+}
+
+/* === CHECKBOXES === */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.checkbox-input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkbox-input:checked {
+    background: #6C5CE7;
+    border-color: #6C5CE7;
+}
+
+.checkbox-input:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.checkbox-label {
+    color: #d0d0d0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* === SECCIÓN DE PRESUPUESTO ===----------------------------------------------------------------------- */
+.budget-section {
+    margin: 30px 0;
+}
+
+.budget-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.budget-option {
+    position: relative;
+}
+
+.budget-radio {
+    width:250px;
+    appearance: none;
+    position: absolute;
+    opacity: 0;
+}
+
+.budget-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.budget-radio:checked + .budget-card {
+    border-color: #6C5CE7;
+    background: rgba(108, 92, 231, 0.1);
+    transform: scale(1.05);
+}
+
+.budget-card:hover {
+    border-color: #6C5CE7;
+    transform: translateY(-2px);
+}
+
+.budget-amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ff88;
+    margin-bottom: 5px;
+}
+
+.budget-desc {
+    font-size: 13px;
+    color: #a0a0a0;
+}
+
+/* === SECCIÓN DE TIMELINE === */
+.timeline-section {
+    margin: 30px 0;
+}
+
+.timeline-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.timeline-tag {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: #d0d0d0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.timeline-tag:hover, .timeline-tag.selected {
+    background: #6C5CE7;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* === BOTONES CTA === */
+.cta-section {
+    margin-top: 60px;
+}
+
+.cta-button, .submit-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #6C5CE7, #00ff88);
+    color: white;
+    padding: 20px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.submit-button {
+    padding: 18px 50px;
+    font-size: 18px;
+    margin: 0;
+}
+
+.cta-button::before, .submit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #00ff88, #6C5CE7);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.cta-button:hover::before, .submit-button:hover::before {
+    left: 0;
+}
+
+.cta-button:hover, .submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+}
+
+.secondary-cta {
+    background: transparent;
+    border: 2px solid #6C5CE7;
+}
+
+.submit-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* === ELEMENTOS FLOTANTES === */
+.floating-elements {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-element {
+    position: absolute;
+    opacity: 0.1;
+    animation: float 8s ease-in-out infinite;
+    font-size: 24px;
+}
+
+.floating-element.form-page {
+    opacity: 0.08;
+    animation: float 10s ease-in-out infinite;
+    font-size: 20px;
+}
+
+.floating-element:nth-child(1) { 
+    top: 15%; 
+    left: 10%; 
+    animation-delay: 0s; 
+}
+
+.floating-element:nth-child(2) { 
+    top: 25%; 
+    right: 15%; 
+    animation-delay: 3s; 
+}
+
+.floating-element.form-page:nth-child(2) { 
+    top: 30%; 
+    animation-delay: 4s; 
+}
+
+.floating-element:nth-child(3) { 
+    bottom: 25%; 
+    left: 20%; 
+    animation-delay: 6s; 
+}
+
+.floating-element.form-page:nth-child(3) { 
+    bottom: 30%; 
+    animation-delay: 8s; 
+}
+
+.floating-element:nth-child(4) { 
+    bottom: 35%; 
+    right: 12%; 
+    animation-delay: 2s; 
+}
+
+.floating-element.form-page:nth-child(4) { 
+    bottom: 40%; 
+    animation-delay: 2s; 
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    50% { 
+        transform: translateY(-25px) rotate(10deg); 
+    }
+}
+
+.floating-element.form-page {
+    animation-name: floatForm;
+}
+
+@keyframes floatForm {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    50% { 
+        transform: translateY(-30px) rotate(15deg); 
+    }
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+    .main-title { 
+        font-size: 36px; 
+    }
+    
+    .main-title.form-title { 
+        font-size: 32px; 
+    }
+    
+    .services { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .container { 
+        padding: 40px 15px; 
+    }
+    
+    .container.form-page { 
+        padding: 20px 15px; 
+    }
+    
+    .cta-button { 
+        display: block; 
+        margin: 10px auto; 
+        max-width: 280px; 
+    }
+    
+    .hostinger-logo { 
+        width: 150px; 
+    }
+    
+    .form-grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .form-container { 
+        padding: 25px; 
+    }
+    
+    .checkbox-group { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .budget-options { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .timeline-options { 
+        justify-content: center; 
+    }
+}
     </style>
 </head>
-<body>
+<body >
+    <div id="init" style="display: block;">
+        
     <div class="code-bg">
         <div class="code-line">// ¿Necesitas una aplicación personalizada? Nosotros la creamos</div>
         <div class="code-line">function crearSoftware(tuIdea) { return solucionCompleta; }</div>
@@ -378,7 +778,7 @@
                 <span class="tech-badge">C#</span>
                 <span class="tech-badge">JavaScript</span>
                 <span class="tech-badge">React</span>
-                <span class="tech-badge">Vue.js</span>
+                <span class="tech-badge">C/C++</span>
                 <span class="tech-badge">Node.js</span>
                 <span class="tech-badge">PHP</span>
                 <span class="tech-badge">MySQL</span>
@@ -388,67 +788,384 @@
             </div>
 
             <div class="cta-section">
-                <a href="#" class="cta-button">Cuéntanos Tu Idea</a>
+                <a href="#" class="cta-button" data-navigate="cuestion">Cuéntanos Tu Idea</a>
                 <a href="#" class="cta-button secondary-cta">Ver Proyectos Anteriores</a>
             </div>
         </div>
     </div>
+</div>
+<div id="cuestion" style="display: none;">
 
+        <div class="code-bg">
+        <div class="code-line">// Tu idea + Nuestra experiencia = Software exitoso</div>
+        <div class="code-line">function procesarIdea(formulario) { return analisisTecnico; }</div>
+        <div class="code-line">const proyecto = { idea: userInput, solucion: development };</div>
+        <div class="code-line">if (tienesBuenaIdea) { nosotrosLaDesarrollamos(); }</div>
+        <div class="code-line">// Cuéntanos qué necesitas, nosotros te decimos cómo hacerlo</div>
+        <div class="code-line">SELECT * FROM ideas WHERE viabilidad = 'alta' AND presupuesto > 0;</div>
+    </div>
+
+    <div class="floating-elements">
+        <div class="floating-element">💡</div>
+        <div class="floating-element">⚡</div>
+        <div class="floating-element">🔥</div>
+        <div class="floating-element">🚀</div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <a href="#" class="back-button" data-navigate="init">Volver al inicio</a>
+            
+            <div class="header-section">
+                <h1 class="main-title">Cuéntanos Tu Idea</h1>
+                <p class="subtitle">
+                    Describe tu proyecto con el mayor detalle posible. Mientras más información nos proporciones, 
+                    mejor podremos ayudarte a convertir tu idea en realidad.
+                </p>
+            </div>
+
+            <div class="form-container">
+                <form id="projectForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Nombre completo *</label>
+                            <input type="text" id="name" name="name" class="form-input" required 
+                                   placeholder="Tu nombre">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-input" required 
+                                   placeholder="tu@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" 
+                                   placeholder="+57 300 123 4567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="company">Empresa/Organización</label>
+                            <input type="text" id="company" name="company" class="form-input" 
+                                   placeholder="Nombre de tu empresa (opcional)">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label" for="projectType">Tipo de proyecto *</label>
+                        <select id="projectType" name="projectType" class="form-select" required>
+                            <option value="">Selecciona el tipo de proyecto</option>
+                            <option value="desktop">Aplicación de Escritorio</option>
+                            <option value="web">Aplicación Web</option>
+                            <option value="both">Ambos (Escritorio y Web)</option>
+                            <option value="mobile">Aplicación Móvil</option>
+                            <option value="system">Sistema Empresarial</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label" for="projectIdea">Describe tu idea en detalle *</label>
+                        <textarea id="projectIdea" name="projectIdea" class="form-textarea" required 
+                                  placeholder="Explica tu idea de software con el máximo detalle posible:
+- ¿Qué problema resuelve?
+- ¿Quién lo usará?
+- ¿Qué funcionalidades debe tener?
+- ¿Tienes ejemplos similares?
+- ¿Necesita integrarse con otros sistemas?
+
+Mientras más detalles, mejor propuesta técnica podremos hacer."></textarea>
+                    </div>
+
+                    <div class="budget-section">
+                        <label class="form-label">Presupuesto aproximado *</label>
+                        <div class="budget-options">
+                            <div class="budget-option">
+                                <input type="radio" id="budget1" name="budget" value="500-1500" class="budget-radio" required>
+                                <label for="budget1" class="budget-card">
+                                    <div class="budget-amount">$500 - $1,500</div>
+                                    <div class="budget-desc">Proyectos simples</div>
+                                </label>
+                            </div>
+                            <div class="budget-option">
+                                <input type="radio" id="budget2" name="budget" value="1500-5000" class="budget-radio">
+                                <label for="budget2" class="budget-card">
+                                    <div class="budget-amount">$1,500 - $5,000</div>
+                                    <div class="budget-desc">Proyectos medianos</div>
+                                </label>
+                            </div>
+                            <div class="budget-option">
+                                <input type="radio" id="budget3" name="budget" value="5000-15000" class="budget-radio">
+                                <label for="budget3" class="budget-card">
+                                    <div class="budget-amount">$5,000 - $15,000</div>
+                                    <div class="budget-desc">Proyectos complejos</div>
+                                </label>
+                            </div>
+                            <div class="budget-option">
+                                <input type="radio" id="budget4" name="budget" value="15000+" class="budget-radio">
+                                <label for="budget4" class="budget-card">
+                                    <div class="budget-amount">$15,000+</div>
+                                    <div class="budget-desc">Sistemas empresariales</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-section">
+                        <label class="form-label">¿Para cuándo necesitas el proyecto?</label>
+                        <div class="timeline-options" id="timelineOptions">
+                            <div class="timeline-tag" data-value="urgente">Lo antes posible</div>
+                            <div class="timeline-tag" data-value="1mes">1 mes</div>
+                            <div class="timeline-tag" data-value="2-3meses">2-3 meses</div>
+                            <div class="timeline-tag" data-value="6meses">6 meses</div>
+                            <div class="timeline-tag" data-value="flexible">Sin prisa</div>
+                        </div>
+                        <input type="hidden" id="timeline" name="timeline">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label" for="additionalInfo">Información adicional</label>
+                        <textarea id="additionalInfo" name="additionalInfo" class="form-textarea" 
+                                  placeholder="¿Hay algo más que debamos saber? Referencias, ejemplos, casos específicos, etc."></textarea>
+                    </div>
+
+                    <div class="submit-section">
+                        <button type="submit" class="submit-button">Enviar Mi Idea</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
     <script>
-        // Animación de las líneas de código
+        // Sistema de navegación entre páginas
+class PageNavigator {
+    constructor() {
+        this.currentPage = 'init'; // Página inicial
+        this.pages = {}; // Almacena las referencias a las páginas
+        this.init();
+    }
+
+    // Inicializar el navegador
+    init() {
+        // Registrar todas las páginas automáticamente
+        this.registerPages();
+        
+        // Mostrar la página inicial
+        this.showPage('init');
+        
+        // Inicializar efectos visuales
+        this.initAnimations();
+        this.initParticleEffect();
+        this.initCardEffects();
+    }
+
+    // Registrar páginas automáticamente basándose en elementos con data-page
+    registerPages() {
+        const pageElements = document.querySelectorAll('[data-page]');
+        pageElements.forEach(element => {
+            const pageName = element.getAttribute('data-page');
+            this.pages[pageName] = element;
+        });
+
+        // Método alternativo: registrar por ID si no usas data-page
+        const initElement = document.getElementById("init");
+        const cuestionElement = document.getElementById("cuestion");
+        
+        if (initElement) this.pages['init'] = initElement;
+        if (cuestionElement) this.pages['cuestion'] = cuestionElement;
+    }
+
+    // Función principal para navegar entre páginas
+    navigateTo(pageName) {
+        if (!this.pages[pageName]) {
+            console.error(`Página "${pageName}" no encontrada`);
+            return;
+        }
+
+        // Ocultar página actual
+        if (this.pages[this.currentPage]) {
+            this.pages[this.currentPage].style.display = 'none';
+        }
+
+        // Mostrar nueva página
+        this.pages[pageName].style.display = 'block';
+        this.currentPage = pageName;
+
+        // Aplicar animación de entrada
+        this.animatePageEntry(this.pages[pageName]);
+    }
+
+    // Mostrar página específica (método alternativo)
+    showPage(pageName) {
+        // Ocultar todas las páginas
+        Object.keys(this.pages).forEach(key => {
+            if (this.pages[key]) {
+                this.pages[key].style.display = 'none';
+            }
+        });
+
+        // Mostrar página solicitada
+        if (this.pages[pageName]) {
+            this.pages[pageName].style.display = 'block';
+            this.currentPage = pageName;
+            this.animatePageEntry(this.pages[pageName]);
+        }
+    }
+
+    // Animación de entrada para las páginas
+    animatePageEntry(pageElement) {
+        pageElement.style.opacity = '0';
+        pageElement.style.transform = 'translateY(20px)';
+        
+        // Forzar reflow
+        pageElement.offsetHeight;
+        
+        // Aplicar transición
+        pageElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        pageElement.style.opacity = '1';
+        pageElement.style.transform = 'translateY(0)';
+    }
+
+    // Navegación con botones (función helper)
+    setupNavigationButtons() {
+        // Buscar todos los botones con data-navigate
+        const navButtons = document.querySelectorAll('[data-navigate]');
+        navButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = button.getAttribute('data-navigate');
+                this.navigateTo(targetPage);
+            });
+        });
+    }
+
+    es(pageName) {
+        this.navigateTo(pageName);
+    }
+
+    initAnimations() {
         const codeLines = document.querySelectorAll('.code-line');
         codeLines.forEach((line, index) => {
             line.style.animationDelay = `${index * 4}s`;
             line.style.animationDuration = `${25 + index * 3}s`;
         });
+    }
 
-        // Efecto de partículas en el cursor
+    // Efecto de partículas en el cursor
+    initParticleEffect() {
         document.addEventListener('mousemove', (e) => {
             if (Math.random() > 0.95) {
-                createParticle(e.clientX, e.clientY);
+                this.createParticle(e.clientX, e.clientY);
             }
         });
 
-        function createParticle(x, y) {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-            particle.style.width = '3px';
-            particle.style.height = '3px';
-            particle.style.background = '#6C5CE7';
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
-            particle.style.zIndex = '1000';
-            particle.style.animation = 'particleFade 1.5s ease-out forwards';
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 1500);
-        }
+        // Agregar estilos CSS para partículas
+        this.addParticleStyles();
+    }
 
-        // CSS para la animación de partículas
+    createParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'cursor-particle';
+        particle.style.position = 'fixed';
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        particle.style.width = '3px';
+        particle.style.height = '3px';
+        particle.style.background = '#6C5CE7';
+        particle.style.borderRadius = '50%';
+        particle.style.pointerEvents = 'none';
+        particle.style.zIndex = '1000';
+        particle.style.animation = 'particleFade 1.5s ease-out forwards';
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.remove();
+            }
+        }, 1500);
+    }
+
+    addParticleStyles() {
+        if (document.getElementById('particle-styles')) return;
+
         const style = document.createElement('style');
+        style.id = 'particle-styles';
         style.textContent = `
             @keyframes particleFade {
-                0% { opacity: 1; transform: scale(1); }
-                100% { opacity: 0; transform: scale(0) translateY(-30px); }
+                0% { 
+                    opacity: 1; 
+                    transform: scale(1); 
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: scale(0) translateY(-30px); 
+                }
+            }
+
+            .page-transition {
+                transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            }
+
+            .page-enter {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            .page-enter-active {
+                opacity: 1;
+                transform: translateY(0);
             }
         `;
         document.head.appendChild(style);
+    }
 
-        // Efecto hover mejorado para las cards
+    initCardEffects() {
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.transition = 'transform 0.3s ease';
             });
-            
+
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
+    }
+
+    getCurrentPage() {
+        return this.currentPage;
+    }
+
+    pageExists(pageName) {
+        return !!this.pages[pageName];
+    }
+}
+
+let pageNavigator;
+
+document.addEventListener('DOMContentLoaded', function() {
+    pageNavigator = new PageNavigator();
+    pageNavigator.setupNavigationButtons();
+});
+
+function es(pageName) {
+    if (pageNavigator) {
+        pageNavigator.es(pageName);
+    }
+}
+
+function navigateTo(pageName) {
+    if (pageNavigator) {
+        pageNavigator.navigateTo(pageName);
+    }
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = PageNavigator;
+}
     </script>
 </body>
 </html>
