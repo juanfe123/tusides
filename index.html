@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desarrollo de Software Personalizado</title>
-    <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);overflow-x:hidden;min-height:100vh}.container{max-width:1200px;margin:0 auto;padding:60px 20px;text-align:center;position:relative}.container.form-page{max-width:1000px;padding:40px 20px;text-align:left}.code-bg{position:fixed;top:0;left:0;width:100%;height:100%;opacity:.08;font-family:'Courier New',monospace;font-size:14px;color:#0f8;overflow:hidden;z-index:0}.code-bg.reduced-opacity{opacity:.06;font-size:12px}.code-line{white-space:nowrap;animation:scrollCode 25s linear infinite;margin:8px 0}.code-line.slower{animation:scrollCode 30s linear infinite;margin:12px 0}@keyframes scrollCode{from{transform:translateX(100%)}to{transform:translateX(-100%)}}.main-content{position:relative;z-index:1}.back-button{display:inline-flex;align-items:center;color:#6c5ce7;text-decoration:none;font-size:16px;margin-bottom:30px;transition:all .3s ease}.back-button:hover{color:#0f8;transform:translateX(-5px)}.back-button::before{content:'← ';margin-right:8px;font-size:18px}.header-section{margin-bottom:50px}.header-section.form-header{text-align:center}.main-title{font-size:52px;font-weight:700;margin:30px 0;background:linear-gradient(45deg,#0f8,#6c5ce7,#ff6b6b);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 4s ease-in-out infinite}.main-title.form-title{font-size:42px;margin:20px 0}@keyframes gradientShift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}.subtitle{font-size:22px;color:#a0a0a0;margin-bottom:40px;max-width:700px;margin-left:auto;margin-right:auto;line-height:1.5}.subtitle.form-subtitle{font-size:18px;margin-bottom:30px;max-width:600px;line-height:1.6}.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;margin:60px 0}.service-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:35px;backdrop-filter:blur(10px);transition:all .3s ease;position:relative;overflow:hidden}.service-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transition:left .5s}.service-card:hover::before{left:100%}.service-card:hover{transform:translateY(-10px);border-color:#6c5ce7;box-shadow:0 20px 40px rgba(108,92,231,.2)}.service-icon{font-size:56px;margin-bottom:25px;display:block}.desktop-icon{color:#ff6b6b}.web-icon{color:#0f8}.service-title{font-size:26px;font-weight:700;color:#fff;margin-bottom:18px}.service-desc{color:#b0b0b0;line-height:1.7;font-size:16px;margin-bottom:20px}.service-features{text-align:left;margin-top:20px}.service-features li{color:#d0d0d0;margin:8px 0;padding-left:15px;position:relative}.service-features li::before{content:'✓';position:absolute;left:0;color:#0f8;font-weight:700}.hosting-section{background:rgba(108,92,231,.1);border:2px solid rgba(108,92,231,.3);border-radius:20px;padding:40px;margin:50px 0;position:relative}.hostinger-logo{width:180px;height:auto;margin-bottom:20px;filter:brightness(1.2)}.hosting-title{font-size:28px;color:#fff;margin-bottom:15px}.hosting-desc{color:silver;font-size:18px;line-height:1.6}.tech-examples{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:40px 0}.tech-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:10px 18px;border-radius:25px;color:#fff;font-size:14px;transition:all .3s ease}.tech-badge:hover{background:#6c5ce7;transform:scale(1.05)}.form-container{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:40px;backdrop-filter:blur(15px);position:relative;overflow:hidden}.form-container::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6c5ce7,#0f8,#ff6b6b);background-size:300% 100%;animation:gradientShift 3s ease-in-out infinite}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-bottom:25px}.form-group{position:relative}.form-group.full-width{grid-column:1/-1}.form-label{display:block;color:#e0e0e0;font-size:16px;font-weight:500;margin-bottom:8px;transition:color .3s ease}.form-input,.form-select,.form-textarea{width:100%;padding:15px 20px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.1);border-radius:12px;color:#fff;font-size:16px;transition:all .3s ease;font-family:inherit}.form-input:focus,.form-select:focus,.form-textarea:focus{outline:0;border-color:#6c5ce7;background:rgba(255,255,255,.12);box-shadow:0 0 20px rgba(108,92,231,.3)}.form-input::placeholder,.form-textarea::placeholder{color:#888}.form-textarea{resize:vertical;min-height:120px;line-height:1.6}.form-select{cursor:pointer}.form-select option{background:#1a1a2e;color:#fff}.checkbox-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:20px 0}.checkbox-item{display:flex;align-items:center;position:relative}.checkbox-input{appearance:none;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-radius:4px;margin-right:12px;position:relative;cursor:pointer;transition:all .3s ease}.checkbox-input:checked{background:#6c5ce7;border-color:#6c5ce7}.checkbox-input:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:12px;font-weight:700}.checkbox-label{color:#d0d0d0;cursor:pointer;font-size:15px}.budget-section{margin:30px 0}.budget-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-top:15px}.budget-option{position:relative}.budget-radio{width:250px;appearance:none;position:absolute;opacity:0}.budget-card{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:all .3s ease}.budget-radio:checked+.budget-card{border-color:#6c5ce7;background:rgba(108,92,231,.1);transform:scale(1.05)}.budget-card:hover{border-color:#6c5ce7;transform:translateY(-2px)}.budget-amount{font-size:18px;font-weight:700;color:#0f8;margin-bottom:5px}.budget-desc{font-size:13px;color:#a0a0a0}.timeline-section{margin:30px 0}.timeline-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}.timeline-tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);padding:8px 16px;border-radius:20px;color:#d0d0d0;cursor:pointer;transition:all .3s ease;font-size:14px}.timeline-tag.selected,.timeline-tag:hover{background:#6c5ce7;color:#fff;transform:scale(1.05)}.cta-section{margin-top:60px}.cta-button,.submit-button{display:inline-block;background:linear-gradient(45deg,#6c5ce7,#0f8);color:#fff;padding:20px 50px;border-radius:50px;text-decoration:none;font-size:20px;font-weight:700;margin:15px;transition:all .3s ease;position:relative;overflow:hidden;border:none;cursor:pointer}.submit-button{padding:18px 50px;font-size:18px;margin:0}.cta-button::before,.submit-button::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(45deg,#0f8,#6c5ce7);transition:left .3s ease;z-index:-1}.cta-button:hover::before,.submit-button:hover::before{left:0}.cta-button:hover,.submit-button:hover{transform:translateY(-3px);box-shadow:0 15px 30px rgba(108,92,231,.4)}.secondary-cta{background:0 0;border:2px solid #6c5ce7}.submit-section{margin-top:40px;text-align:center}.floating-elements{position:fixed;width:100%;height:100%;top:0;left:0;pointer-events:none;z-index:0}.floating-element{position:absolute;opacity:.1;animation:float 8s ease-in-out infinite;font-size:24px}.floating-element.form-page{opacity:.08;animation:float 10s ease-in-out infinite;font-size:20px}.floating-element:first-child{top:15%;left:10%;animation-delay:0s}.floating-element:nth-child(2){top:25%;right:15%;animation-delay:3s}.floating-element.form-page:nth-child(2){top:30%;animation-delay:4s}.floating-element:nth-child(3){bottom:25%;left:20%;animation-delay:6s}.floating-element.form-page:nth-child(3){bottom:30%;animation-delay:8s}.floating-element:nth-child(4){bottom:35%;right:12%;animation-delay:2s}.floating-element.form-page:nth-child(4){bottom:40%;animation-delay:2s}@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-25px) rotate(10deg)}}.floating-element.form-page{animation-name:floatForm}@keyframes floatForm{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(15deg)}}@media (max-width:768px){.main-title{font-size:36px}.main-title.form-title{font-size:32px}.services{grid-template-columns:1fr}.container{padding:40px 15px}.container.form-page{padding:20px 15px}.cta-button{display:block;margin:10px auto;max-width:280px}.hostinger-logo{width:150px}.form-grid{grid-template-columns:1fr}.form-container{padding:25px}.checkbox-group{grid-template-columns:1fr}.budget-options{grid-template-columns:1fr}.timeline-options{justify-content:center}}</style>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);overflow-x:hidden;min-height:100vh}.container{max-width:1200px;margin:0 auto;padding:60px 20px;text-align:center;position:relative}.container.form-page{max-width:1000px;padding:40px 20px;text-align:left}.code-bg{position:fixed;top:0;left:0;width:100%;height:100%;opacity:.08;font-family:'Courier New',monospace;font-size:14px;color:#0f8;overflow:hidden;z-index:0}.code-bg.reduced-opacity{opacity:.06;font-size:12px}.code-line{white-space:nowrap;animation:scrollCode 25s linear infinite;margin:8px 0}.code-line.slower{animation:scrollCode 30s linear infinite;margin:12px 0}@keyframes scrollCode{from{transform:translateX(100%)}to{transform:translateX(-100%)}}.main-content{position:relative;z-index:1}.back-button{display:inline-flex;align-items:center;color:#6c5ce7;text-decoration:none;font-size:16px;margin-bottom:30px;transition:all .3s ease}.back-button:hover{color:#0f8;transform:translateX(-5px)}.back-button::before{content:'← ';margin-right:8px;font-size:18px}.header-section{margin-bottom:50px}.header-section.form-header{text-align:center}.main-title{font-size:52px;font-weight:700;margin:30px 0;background:linear-gradient(45deg,#0f8,#6c5ce7,#ff6b6b);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 4s ease-in-out infinite}.main-title.form-title{font-size:42px;margin:20px 0}@keyframes gradientShift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}.subtitle{font-size:22px;color:#a0a0a0;margin-bottom:40px;max-width:700px;margin-left:auto;margin-right:auto;line-height:1.5}.subtitle.form-subtitle{font-size:18px;margin-bottom:30px;max-width:600px;line-height:1.6}.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;margin:60px 0}.service-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:35px;backdrop-filter:blur(10px);transition:all .3s ease;position:relative;overflow:hidden}.service-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transition:left .5s}.service-card:hover::before{left:100%}.service-card:hover{transform:translateY(-10px);border-color:#6c5ce7;box-shadow:0 20px 40px rgba(108,92,231,.2)}.service-icon{font-size:56px;margin-bottom:25px;display:block}.desktop-icon{color:#ff6b6b}.web-icon{color:#0f8}.service-title{font-size:26px;font-weight:700;color:#fff;margin-bottom:18px}.service-desc{color:#b0b0b0;line-height:1.7;font-size:16px;margin-bottom:20px}.service-features{text-align:left;margin-top:20px}.service-features li{color:#d0d0d0;margin:8px 0;padding-left:15px;position:relative}.service-features li::before{content:'✓';position:absolute;left:0;color:#0f8;font-weight:700}.hosting-section{background:rgba(108,92,231,.1);border:2px solid rgba(108,92,231,.3);border-radius:20px;padding:40px;margin:50px 0;position:relative}.hostinger-logo{width:180px;height:auto;margin-bottom:20px;filter:brightness(1.2)}.hosting-title{font-size:28px;color:#fff;margin-bottom:15px}.hosting-desc{color:silver;font-size:18px;line-height:1.6}.tech-examples{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:40px 0}.tech-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:10px 18px;border-radius:25px;color:#fff;font-size:14px;transition:all .3s ease}.tech-badge:hover{background:#6c5ce7;transform:scale(1.05)}.form-container{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:40px;backdrop-filter:blur(15px);position:relative;overflow:hidden}.form-container::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6c5ce7,#0f8,#ff6b6b);background-size:300% 100%;animation:gradientShift 3s ease-in-out infinite}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-bottom:25px}.form-group{position:relative}.form-group.full-width{grid-column:1/-1}.form-label{display:block;color:#e0e0e0;font-size:16px;font-weight:500;margin-bottom:8px;transition:color .3s ease}.form-input,.form-select,.form-textarea{width:100%;padding:15px 20px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.1);border-radius:12px;color:#fff;font-size:16px;transition:all .3s ease;font-family:inherit}.form-input:focus,.form-select:focus,.form-textarea:focus{outline:0;border-color:#6c5ce7;background:rgba(255,255,255,.12);box-shadow:0 0 20px rgba(108,92,231,.3)}.form-input::placeholder,.form-textarea::placeholder{color:#888}.form-textarea{resize:vertical;min-height:120px;line-height:1.6}.form-select{cursor:pointer}.form-select option{background:#1a1a2e;color:#fff}.checkbox-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:20px 0}.checkbox-item{display:flex;align-items:center;position:relative}.checkbox-input{appearance:none;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-radius:4px;margin-right:12px;position:relative;cursor:pointer;transition:all .3s ease}.checkbox-input:checked{background:#6c5ce7;border-color:#6c5ce7}.checkbox-input:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:12px;font-weight:700}.checkbox-label{color:#d0d0d0;cursor:pointer;font-size:15px}.budget-section{margin:30px 0}.budget-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin-top:15px}.budget-option{position:relative}.budget-radio{width:250px;appearance:none;position:absolute;opacity:0}.budget-card{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:all .3s ease}.budget-radio:checked+.budget-card{border-color:#6c5ce7;background:rgba(108,92,231,.1);transform:scale(1.05)}.budget-card:hover{border-color:#6c5ce7;transform:translateY(-2px)}.budget-amount{font-size:18px;font-weight:700;color:#0f8;margin-bottom:5px}.budget-desc{font-size:13px;color:#a0a0a0}.timeline-section{margin:30px 0}.timeline-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}.timeline-tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);padding:8px 16px;border-radius:20px;color:#d0d0d0;cursor:pointer;transition:all .3s ease;font-size:14px}.timeline-tag.selected,.timeline-tag:hover{background:#6c5ce7;color:#fff;transform:scale(1.05)}.cta-section{margin-top:60px}.cta-button,.submit-button{display:inline-block;background:linear-gradient(45deg,#6c5ce7,#0f8);color:#fff;padding:20px 50px;border-radius:50px;text-decoration:none;font-size:20px;font-weight:700;margin:15px;transition:all .3s ease;position:relative;overflow:hidden;border:none;cursor:pointer}.submit-button{padding:18px 50px;font-size:18px;margin:0}.cta-button::before,.submit-button::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(45deg,#0f8,#6c5ce7);transition:left .3s ease;z-index:-1}.cta-button:hover::before,.submit-button:hover::before{left:0}.cta-button:hover,.submit-button:hover{transform:translateY(-3px);box-shadow:0 15px 30px rgba(108,92,231,.4)}.secondary-cta{background:0 0;border:2px solid #6c5ce7}.submit-section{margin-top:40px;text-align:center}.floating-elements{position:fixed;width:100%;height:100%;top:0;left:0;pointer-events:none;z-index:0}.floating-element{position:absolute;opacity:.1;animation:float 8s ease-in-out infinite;font-size:24px}.floating-element.form-page{opacity:.08;animation:float 10s ease-in-out infinite;font-size:20px}.floating-element:first-child{top:15%;left:10%;animation-delay:0s}.floating-element:nth-child(2){top:25%;right:15%;animation-delay:3s}.floating-element.form-page:nth-child(2){top:30%;animation-delay:4s}.floating-element:nth-child(3){bottom:25%;left:20%;animation-delay:6s}.floating-element.form-page:nth-child(3){bottom:30%;animation-delay:8s}.floating-element:nth-child(4){bottom:35%;right:12%;animation-delay:2s}.floating-element.form-page:nth-child(4){bottom:40%;animation-delay:2s}@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-25px) rotate(10deg)}}.floating-element.form-page{animation-name:floatForm}@keyframes floatForm{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(15deg)}}@media (max-width:768px){.main-title{font-size:36px}.main-title.form-title{font-size:32px}.services{grid-template-columns:1fr}.container{padding:40px 15px}.container.form-page{padding:20px 15px}.cta-button{display:block;margin:10px auto;max-width:280px}.hostinger-logo{width:150px}.form-grid{grid-template-columns:1fr}.form-container{padding:25px}.checkbox-group{grid-template-columns:1fr}.budget-options{grid-template-columns:1fr}.timeline-options{justify-content:center}}
+    </style>
 </head>
 <body >
     <div id="init" style="display: block;">
@@ -94,7 +96,7 @@
 
             <div class="cta-section">
                 <a href="#" class="cta-button" data-navigate="cuestion">Cuéntanos Tu Idea</a>
-                <a href="https://juanfe123.github.io/tusides2/" class="cta-button secondary-cta">Ver Proyectos Anteriores</a>
+                <a id="page2" class="cta-button secondary-cta">Ver Proyectos Anteriores</a>
             </div>
         </div>
     </div>
@@ -384,13 +386,24 @@ class PageNavigator {
 }
 
 let pageNavigator;
+let resC = new Map();
 
 document.addEventListener('DOMContentLoaded', function() {
     pageNavigator = new PageNavigator();
     pageNavigator.setupNavigationButtons();
 
+    (async () => {
+        const url = "https://juanfe123.github.io/tusides2/";
+        try {
+            await preload();
+            const lin = cClink(url);
+            return lin
+        } catch (error) {
+            throw new Error(`Error al cahear URL ${error.message}`);
+        }
+    })();
+
     const form = document.getElementById('projectForm');
-    console.log('Formulario encontrado en DOMContentLoaded:', form);
     
     if (!form) {
         console.error('Formulario #projectForm NO encontrado. El listener de SUBMIT no se adjuntará.');
@@ -446,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Reemplaza tu función handleFormSubmit existente con esta versión corregida.
 let apiHealthCache = null;
 let apiHealthTimestamp = null;
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos en milliseconds
+const CACHE_DURATION = 10 * 60 * 1000; // 5 minutos en milliseconds
 
 // Función para verificar el estado de la API
 async function checkApiHealth() {
@@ -558,7 +571,7 @@ async function handleFormSubmit(e) {
         const isApiHealthy = await checkApiHealth();
         
         if (!isApiHealthy) {
-            statusDiv.innerHTML = '⚠️ El servicio no está disponible. Intentando envío...';
+            statusDiv.innerHTML = '⚠️ El servicio no está disponible. Intentando envío ,as tarde';
             statusDiv.style.color = 'orange';
         }
         
@@ -632,6 +645,54 @@ async function handleFormSubmit(e) {
         }
     }
 }
+
+async function preload() {
+    const url = "https://juanfe123.github.io/tusides2/";
+    try {
+        const res = await fetch(url, {
+            method: 'GET',
+            mode: 'cors',
+           cache: 'force-cache'
+        });
+
+        const con = await res.text();
+        const hea = {};
+
+        res.headers.forEach((v, k) => {
+            hea[k] = v;
+        });
+        resC.set(url, {
+            content: con,
+            headers: hea,
+            status: res.status,
+            timestamp: Date.now() 
+        });
+        return { success: true, size: con.length };
+    } catch (error) {
+        throw new Error(`Error al precargar la paginacion: ${error.message}`); 
+    }
+}
+
+function cClink(url) {
+  if (!resC.has(url)) {
+    throw new Error(`La URL ${url} no está precargada en resC.`);
+  }
+
+  const { content, headers } = resC.get(url);
+  const mimeType = headers['content-type'] || 'text/html';
+
+  const blob = new Blob([content], { type: mimeType });
+  const blobUrl = URL.createObjectURL(blob);
+
+  const a = document.getElementById('page2');
+  a.href = blobUrl;
+  a.textContent = linkText;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+
+  return a;
+}
+
 
 function testSubmit() {
     console.log('🧪 Probando submit manualmente con testSubmit()...');
